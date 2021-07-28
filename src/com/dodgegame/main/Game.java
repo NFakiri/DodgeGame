@@ -14,10 +14,14 @@ public class Game extends Canvas implements Runnable {
 
 	private Thread thread;
 	private boolean running = false;
+	
+	private Handler handler;
 
 	// Constructor method creating, creating new Window object.
 	public Game() {
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
+		
+		handler = new Handler();
 	}
 
 	// Start the thread
@@ -66,7 +70,7 @@ public class Game extends Canvas implements Runnable {
 
 
 	private void tick() {
-		// TODO Auto-generated method stub
+		handler.tick();
 		
 	}
 	
@@ -81,6 +85,9 @@ public class Game extends Canvas implements Runnable {
 		
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		handler.render(g);
+		
 		g.dispose();
 		bs.show();
 	}
