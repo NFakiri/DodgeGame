@@ -2,6 +2,7 @@ package com.dodgegame.main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class BasicEnemy extends GameObject{
 
@@ -10,6 +11,11 @@ public class BasicEnemy extends GameObject{
 		
 		velocityX = 5;
 		velocityY = 5;
+	}
+	
+	@Override
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, 16, 16);
 	}
 
 	
