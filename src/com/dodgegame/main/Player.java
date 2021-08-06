@@ -25,8 +25,6 @@ public class Player extends GameObject {
 	@Override
 	public void render(Graphics g) {
 		if (id == ID.Player) g.setColor(Color.white);
-		else if(id == ID.Player2) g.setColor(Color.red);
-		//g.setColor(Color.white);
 		g.fillRect(x, y, 32, 32);
 	}
 	
