@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 public class Trail extends GameObject {
 	
 	private float alpha = 1; 
-	private float life; // life is a value between 0.001 and 0.1
+	private float particleLife; // life is a value between 0.001 and 0.1
 	
 	
 	private Handler handler;
@@ -17,19 +17,19 @@ public class Trail extends GameObject {
 	
 	private int height, width;
 	
-	public Trail(int x, int y, ID id, Color color, int height, int width, float life, Handler handler) {
+	public Trail(int x, int y, ID id, Color color, int height, int width, float particleLife, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.color = color;
 		this.height = height;
 		this.width = width;
-		this.life = life;
+		this.particleLife = particleLife;
 	}
 
 	@Override
 	public void tick() {
-		if (alpha > life) {
-			alpha -= life - 0.0001f;
+		if (alpha > particleLife) {
+			alpha -= particleLife - 0.0001f;
 		} else {
 			handler.removeObject(this);
 		}
