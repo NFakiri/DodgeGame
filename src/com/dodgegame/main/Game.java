@@ -19,6 +19,7 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private Handler handler;
 	private HUD hud;
+	private Spawn spawn;
 
 	// Constructor method creating, creating new Window object.
 	public Game() {
@@ -28,16 +29,11 @@ public class Game extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
 		
 		hud = new HUD();
-		
+		spawn = new Spawn(handler, hud);
 		r = new Random();
 		
 		handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-		
+		handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
 	}
 
 	// Start the thread
@@ -89,6 +85,7 @@ public class Game extends Canvas implements Runnable {
 	private void tick() {
 		handler.tick();
 		hud.tick();
+		spawn.tick();
 	}
 	
 	private void render() {
