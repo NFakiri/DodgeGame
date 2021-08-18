@@ -33,7 +33,13 @@ public class Game extends Canvas implements Runnable {
 		r = new Random();
 		
 		handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
+		//handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
+		
+		
+		
+		
+		handler.addObject(new BossEnemy((Game.WIDTH / 2) -64, -120, ID.BossEnemy, handler));
+		
 	}
 
 	// Start the thread
