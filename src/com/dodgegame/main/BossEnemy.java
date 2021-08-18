@@ -40,7 +40,7 @@ public class BossEnemy extends GameObject{
 		{
 			if(velocityX == 0) velocityX = 2;
 			int spawn = r.nextInt(10);
-			if (spawn == 0) handler.addObject(new BossEnemyProjectiles((int) x, (int) y, ID.BasicEnemy, handler));
+			if (spawn == 0) handler.addObject(new BossEnemyProjectiles((int) x + 48, (int) y + 48, ID.BasicEnemy, handler));
 		}
 		
 		// set the bounds of the NPC within JFrame
