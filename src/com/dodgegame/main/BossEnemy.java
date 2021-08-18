@@ -39,6 +39,15 @@ public class BossEnemy extends GameObject{
 		if (timer2 <= 0)
 		{
 			if(velocityX == 0) velocityX = 2;
+			
+			if (velocityX > 0)
+			velocityX += 0.005f;
+			else if (velocityX < 0)
+			velocityX -= 0.01f;
+			
+			velocityX = Game.clamp(velocityX, -8, 8);
+			System.out.println(velocityX);
+			
 			int spawn = r.nextInt(10);
 			if (spawn == 0) handler.addObject(new BossEnemyProjectiles((int) x + 48, (int) y + 48, ID.BasicEnemy, handler));
 		}
