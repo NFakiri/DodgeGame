@@ -22,7 +22,7 @@ public class SmartEnemy extends GameObject{
 	
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 16, 16);
+		return new Rectangle((int) x, (int) y, 16, 16);
 	}
 
 	
@@ -34,8 +34,8 @@ public class SmartEnemy extends GameObject{
 		float diffY = y - player.getY() - 8;
 		float distance = (float) Math.sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
 		
-		velocityX = (int) Math.round((-1.0/distance) * diffX);
-		velocityY = (int) Math.round((-1.0/distance) * diffY);
+		velocityX = ((-1 / distance) * diffX);
+		velocityY = ((-1 / distance) * diffY);
 		
 		// set the bounds of the NPC within JFrame
 		if (x <= 0 || x >= Game.WIDTH - 32) velocityX *= -1; 
@@ -48,7 +48,7 @@ public class SmartEnemy extends GameObject{
 	
 	public void render(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect(x, y, 16, 16);
+		g.fillRect((int) x, (int) y, 16, 16);
 	}
 	
 }

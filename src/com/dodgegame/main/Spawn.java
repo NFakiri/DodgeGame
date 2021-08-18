@@ -15,7 +15,7 @@ public class Spawn {
 	}
 	
 	public void tick() {
-		hud.setScore(hud.getScore() + 1);
+		//hud.setScore(hud.getScore() + 1);
 		
 		if (hud.getScore() % 100 == 0) {
 			hud.setLevel(hud.getLevel() + 1);
