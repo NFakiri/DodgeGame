@@ -18,7 +18,7 @@ public class Player extends GameObject {
 	
 	@Override
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 32, 32);
+		return new Rectangle((int) x, (int) y, 32, 32);
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ public class Player extends GameObject {
 			GameObject tempObject = handler.objectList.get(i);
 			
 			// if the object within handler's object list is BasicEnemy then:
-			if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy ){
+			if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy || tempObject.getId() == ID.SmartEnemy){
 				if(getBounds().intersects(tempObject.getBounds())) {
 					// collision code
 					HUD.HEALTH -= 2;
@@ -51,7 +51,7 @@ public class Player extends GameObject {
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect(x, y, 32, 32);
+		g.fillRect((int) x, (int) y, 32, 32);
 	}
 	
 	

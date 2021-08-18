@@ -6,9 +6,14 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter{
 	
 	private Handler handler;
+	private boolean[] keyDown = new boolean[4];
 	
 	public KeyInput(Handler handler) {
 		this.handler = handler;
+		
+		for (int i = 0; i < keyDown.length; i++) {
+			keyDown[i] = false;
+		}
 	}
 	
 	public void keyPressed(KeyEvent e) {
@@ -19,10 +24,10 @@ public class KeyInput extends KeyAdapter{
 			
 			if(tempObject.getId() == ID.Player) {
 				// All key events for player 1.
-				if (keyPressed == KeyEvent.VK_W) tempObject.setVelocityY(-5);
-				if (keyPressed == KeyEvent.VK_S) tempObject.setVelocityY(5);
-				if (keyPressed == KeyEvent.VK_A) tempObject.setVelocityX(-5);
-				if (keyPressed == KeyEvent.VK_D) tempObject.setVelocityX(5);
+				if (keyPressed == KeyEvent.VK_W) { tempObject.setVelocityY(-5); keyDown[0] = true; }
+				if (keyPressed == KeyEvent.VK_S) { tempObject.setVelocityY(5); keyDown[1] = true; }
+				if (keyPressed == KeyEvent.VK_A) { tempObject.setVelocityX(-5); keyDown[2] = true; }
+				if (keyPressed == KeyEvent.VK_D) { tempObject.setVelocityX(5); keyDown[3] = true; }
 			}
 		}
 		
@@ -39,10 +44,16 @@ public class KeyInput extends KeyAdapter{
 			
 			if(tempObject.getId() == ID.Player) {
 				// All key events for player 1.
-				if (keyPressed == KeyEvent.VK_W) tempObject.setVelocityY(0);
-				if (keyPressed == KeyEvent.VK_S) tempObject.setVelocityY(0);
-				if (keyPressed == KeyEvent.VK_A) tempObject.setVelocityX(0);
-				if (keyPressed == KeyEvent.VK_D) tempObject.setVelocityX(0);
+				if (keyPressed == KeyEvent.VK_W) keyDown[0] = false;
+				if (keyPressed == KeyEvent.VK_S) keyDown[1] = false;
+				if (keyPressed == KeyEvent.VK_A) keyDown[2] = false; 
+				if (keyPressed == KeyEvent.VK_D) keyDown[3] = false;
+				
+				// Vertical movement - If W or S are not being pressed, set velocity Y to 0.
+				if (!keyDown[0] && !keyDown[1]) tempObject.setVelocityY(0);
+				
+				// Horizontal movement - If A or D are not being pressed, set velocity X to 0.
+				if (!keyDown[2] && !keyDown[3]) tempObject.setVelocityX(0);
 			}
 		}
 	}

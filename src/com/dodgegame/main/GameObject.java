@@ -5,11 +5,11 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 
-	protected int x, y;
+	protected float x, y;
 	protected ID id; // enumeration from ID class.
-	protected int velocityX, velocityY;
+	protected float velocityX, velocityY;
 
-	public GameObject(int x, int y, ID id) {
+	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
@@ -19,7 +19,7 @@ public abstract class GameObject {
 	public abstract void render(Graphics g);
 	public abstract Rectangle getBounds();
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
@@ -27,7 +27,7 @@ public abstract class GameObject {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
@@ -43,7 +43,7 @@ public abstract class GameObject {
 		this.id = id;
 	}
 
-	public int getVelocityX() {
+	public float getVelocityX() {
 		return velocityX;
 	}
 
@@ -51,7 +51,7 @@ public abstract class GameObject {
 		this.velocityX = velocityX;
 	}
 
-	public int getVelocityY() {
+	public float getVelocityY() {
 		return velocityY;
 	}
 
