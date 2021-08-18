@@ -23,6 +23,17 @@ public class Handler {
 		}
 	}
 	
+	public void clearEnemies() {
+		for (int i = 0; i < objectList.size(); i++) {
+			GameObject tempObject = objectList.get(i);
+			
+			if (tempObject.getId() != ID.Player) {
+				removeObject(tempObject);
+				i--;
+			}
+		}
+	}
+	
 	public void addObject(GameObject object) {
 		this.objectList.add(object);
 	}
