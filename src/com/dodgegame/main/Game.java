@@ -20,6 +20,14 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private HUD hud;
 	private Spawn spawn;
+	private Menu menu;
+	
+	public enum STATE {
+		Menu,
+		Game
+	};
+	
+	public STATE gameState = STATE.Menu;
 
 	// Constructor method creating, creating new Window object.
 	public Game() {
@@ -30,11 +38,13 @@ public class Game extends Canvas implements Runnable {
 		
 		hud = new HUD();
 		spawn = new Spawn(handler, hud);
+		menu = new Menu();
 		r = new Random();
 		
-		handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
-		handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
-		
+		if (gameState == STATE.Game) {
+			handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
+			handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
+		}
 	}
 
 	// Start the thread
@@ -85,8 +95,13 @@ public class Game extends Canvas implements Runnable {
 
 	private void tick() {
 		handler.tick();
-		hud.tick();
-		spawn.tick();
+		
+		if (gameState == STATE.Game) {
+			hud.tick();
+			spawn.tick();
+		} else if (gameState == STATE.Menu) {
+			menu.tick();
+		}
 	}
 	
 	private void render() {
@@ -103,7 +118,11 @@ public class Game extends Canvas implements Runnable {
 			
 		handler.render(g);
 		
-		hud.render(g);
+		if (gameState == STATE.Game) {
+			hud.render(g);
+		}  else if (gameState == STATE.Menu) {
+			menu.render(g);
+		}
 		
 		g.dispose();
 		bs.show();
