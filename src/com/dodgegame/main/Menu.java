@@ -27,6 +27,15 @@ public class Menu extends MouseAdapter{
 	}
 	
 	private boolean mouseOver(int mouseX, int mouseY, int x, int y, int width, int height) {
+		if(mouseX > x && mouseX < x + width) {
+			if (mouseY > y  && mouseY < y + height) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	public void render(Graphics g) {
