@@ -36,6 +36,14 @@ public class Menu extends MouseAdapter{
 			game.gameState = STATE.Help;
 		}
 		
+		// back button for help
+		if (game.gameState == STATE.Help) {
+			if(mouseOver(mouseX, mouseY, 210, 350, 200, 64)) {
+				game.gameState = STATE.Menu;
+				return;
+			}
+		}
+		
 		// quit button
 		if (mouseOver(mouseX, mouseY, 210, 350, 200, 64)) {
 			System.exit(1);
@@ -84,10 +92,18 @@ public class Menu extends MouseAdapter{
 		} else if (game.gameState == STATE.Help) {
 			Font font = new Font("arial", 1, 50);
 			Font font2 = new Font("arial", 1, 30);
+			Font font3 = new Font("arial", 1, 20);
 			
 			g.setFont(font);
 			g.setColor(Color.white);
 			g.drawString("Help", 240, 70);
+			
+			g.setFont(font3);
+			g.drawString("Use WASD keys to move the player and dodge enemies!", 50, 200);
+			
+			g.setFont(font2);
+			g.drawRect(210, 350, 200, 64);
+			g.drawString("Quit", 270, 390);
 		}
 	
 	}
