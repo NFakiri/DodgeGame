@@ -25,15 +25,22 @@ public class Menu extends MouseAdapter{
 		int mouseX = e.getX();
 		int mouseY = e.getY();
 		
-		if (mouseOver(mouseX, mouseY, 210, 150, 200, 64)) {
-			game.gameState = STATE.Game;
-			handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, ID.Player, handler));
-			handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
-		}
-		
-		// help button
-		if (mouseOver(mouseX, mouseY, 210, 250, 200, 64)) {
-			game.gameState = STATE.Help;
+		if (game.gameState == STATE.Menu) {
+			if (mouseOver(mouseX, mouseY, 210, 150, 200, 64)) {
+				game.gameState = STATE.Game;
+				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, ID.Player, handler));
+				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
+			}
+			
+			// help button
+			if (mouseOver(mouseX, mouseY, 210, 250, 200, 64)) {
+				game.gameState = STATE.Help;
+			}
+			
+			// quit button
+			if (mouseOver(mouseX, mouseY, 210, 350, 200, 64)) {
+				System.exit(1);
+			}
 		}
 		
 		// back button for help
@@ -43,12 +50,6 @@ public class Menu extends MouseAdapter{
 				return;
 			}
 		}
-		
-		// quit button
-		if (mouseOver(mouseX, mouseY, 210, 350, 200, 64)) {
-			System.exit(1);
-		}
-		
 	}
 	
 	public void mouseReleased(MouseEvent e) {
@@ -103,7 +104,7 @@ public class Menu extends MouseAdapter{
 			
 			g.setFont(font2);
 			g.drawRect(210, 350, 200, 64);
-			g.drawString("Quit", 270, 390);
+			g.drawString("Back", 270, 390);
 		}
 	
 	}
