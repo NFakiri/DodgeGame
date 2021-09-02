@@ -22,7 +22,10 @@ public class MenuParticle extends GameObject{
 		velocityX = (r.nextInt(2 - -2) + 2);
 		velocityY = (r.nextInt(2 - -2) + 2);
 		
-
+		// Prevents menu particles with velocity of 0.
+		if (velocityX == 0) { velocityX = 1; }
+		if (velocityY == 0) { velocityY = 1; }
+		
 		color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
 	}
 	
