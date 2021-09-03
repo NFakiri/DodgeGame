@@ -109,8 +109,8 @@ public class Game extends Canvas implements Runnable {
 			
 			if (HUD.HEALTH <= 0) {
 				HUD.HEALTH = 100;
-				handler.clearEnemies();
 				gameState = STATE.End;
+				handler.objectList.clear();
 			}
 		} else if (gameState == STATE.Menu || gameState == STATE.End) {
 			menu.tick();
