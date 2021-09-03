@@ -116,14 +116,14 @@ public class Menu extends MouseAdapter{
 
 			g.setFont(font);
 			g.setColor(Color.white);
-			g.drawString("Game Over!", 240, 70);
+			g.drawString("Game Over!", 175, 70);
 
 			g.setFont(font3);
-			g.drawString("You lost with a score of " + hud.getScore() , 50, 200);
+			g.drawString("You lost with a score of " + hud.getScore() + "!" , 180, 200);
 
 			g.setFont(font2);
 			g.drawRect(210, 350, 200, 64);
-			g.drawString("Try Again", 270, 390);
+			g.drawString("Try Again", 245, 390);
 		}
 
 	}

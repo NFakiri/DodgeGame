@@ -111,6 +111,9 @@ public class Game extends Canvas implements Runnable {
 				HUD.HEALTH = 100;
 				gameState = STATE.End;
 				handler.objectList.clear();
+				for (int i = 0; i < 5; i++) {
+					handler.addObject(new MenuParticle(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 52), ID.MenuParticle, handler));
+				}
 			}
 		} else if (gameState == STATE.Menu || gameState == STATE.End) {
 			menu.tick();
