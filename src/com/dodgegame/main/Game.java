@@ -39,6 +39,10 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
 		
+		AudioPlayer.load();
+		
+		AudioPlayer.getMusic("music").loop();
+		
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
 		
 		spawn = new Spawn(handler, hud);
@@ -48,7 +52,7 @@ public class Game extends Canvas implements Runnable {
 			handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
 			handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
 		} else { 
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 18; i++) {
 				handler.addObject(new MenuParticle(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 52), ID.MenuParticle, handler));
 			}
 		}
@@ -110,7 +114,7 @@ public class Game extends Canvas implements Runnable {
 			if (HUD.HEALTH <= 0) {
 				gameState = STATE.End;
 				handler.objectList.clear();
-				for (int i = 0; i < 5; i++) {
+				for (int i = 0; i < 18; i++) {
 					handler.addObject(new MenuParticle(r.nextInt(WIDTH - 32), r.nextInt(HEIGHT - 52), ID.MenuParticle, handler));
 				}
 			}
@@ -130,7 +134,7 @@ public class Game extends Canvas implements Runnable {
 		
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
-			
+		
 		handler.render(g);
 		
 		if (gameState == STATE.Game) {

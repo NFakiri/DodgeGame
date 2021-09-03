@@ -13,7 +13,6 @@ public class MenuParticle extends GameObject{
 	
 	private Color color;
 	
-
 	public MenuParticle(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		
@@ -26,7 +25,7 @@ public class MenuParticle extends GameObject{
 		if (velocityX == 0) { velocityX = 1; }
 		if (velocityY == 0) { velocityY = 1; }
 		
-		color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
+		color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255), 40);
 	}
 	
 	@Override
