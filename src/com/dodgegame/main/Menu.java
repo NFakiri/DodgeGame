@@ -54,6 +54,18 @@ public class Menu extends MouseAdapter{
 				return;
 			}
 		}
+		
+		// Try Again button for Game Over screen.
+				if (game.gameState == STATE.End) {
+					if(mouseOver(mouseX, mouseY, 210, 350, 200, 64)) {
+						game.gameState = STATE.Game;
+						hud.reset();
+						handler.clearEnemies();
+						handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, ID.Player, handler));
+						handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 32), r.nextInt(Game.HEIGHT - 52), ID.BasicEnemy, handler));
+						return;
+					}
+				}
 	}
 
 	public void mouseReleased(MouseEvent e) {
