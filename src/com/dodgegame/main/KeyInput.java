@@ -3,13 +3,19 @@ package com.dodgegame.main;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import com.dodgegame.main.Game.STATE;
+
 public class KeyInput extends KeyAdapter{
 	
 	private Handler handler;
 	private boolean[] keyDown = new boolean[4];
 	
-	public KeyInput(Handler handler) {
+	Game game;
+	
+	public KeyInput(Handler handler, Game game) {
 		this.handler = handler;
+		
+		this.game = game;
 		
 		for (int i = 0; i < keyDown.length; i++) {
 			keyDown[i] = false;
@@ -28,6 +34,13 @@ public class KeyInput extends KeyAdapter{
 				if (keyPressed == KeyEvent.VK_S) { tempObject.setVelocityY(5); keyDown[1] = true; }
 				if (keyPressed == KeyEvent.VK_A) { tempObject.setVelocityX(-5); keyDown[2] = true; }
 				if (keyPressed == KeyEvent.VK_D) { tempObject.setVelocityX(5); keyDown[3] = true; }
+			}
+		}
+		
+		if (keyPressed == KeyEvent.VK_P) {
+			if (game.gameState == STATE.Game) {
+				if (Game.paused) game.paused = false;
+				else Game.paused = true;
 			}
 		}
 		
